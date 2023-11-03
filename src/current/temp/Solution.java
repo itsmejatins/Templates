@@ -1,38 +1,35 @@
 package current.temp;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Arrays;
 
 class Solution
 {
-	public int lengthOfLongestSubstring(String s)
+	public int minEatingSpeed(int[] piles, int h)
 	{
-		if (s.length() == 0)
-			return 0;
-
-		int i = 0, j = 0; // window is from i to j - 1
-		int ans = 1;
-		Map<Character, Integer> freq = new HashMap<>();
-
-		while (j < s.length())
+		int low = 1, high = Arrays.stream(piles).max().getAsInt();
+		while (low <= high)
 		{
-			if (freq.getOrDefault(s.charAt(j), 0) > 0)
-			{
-				freq.compute(s.charAt(i), (k, v) -> v - 1);
-				i++;
-			}
+			int mid = (low + high) / 2;
+			if (canEat(piles, mid, h))
+				high = mid - 1;
 			else
-			{
-				freq.put(s.charAt(j), 1);
-				j++;
-				ans = Math.max(ans, j - i);
-			}
-			// if(i == j)
-			// {
-
-			// j++;
-			// }
+				low = mid + 1;
 		}
-		return ans;
+		return high + 1;
+	}
+
+	private boolean canEat(int piles[], int speed, int timeAvailable)
+	{
+		long timeTaken = Arrays.stream(piles).mapToLong(i -> i).reduce(0,
+				(a, b) -> a + (long) Math.ceil((double) b / speed));
+		return timeTaken <= timeAvailable;
+	}
+
+	public static void main(String[] args)
+	{
+		int piles[] = { 805306368, 805306368, 805306368 };
+		int h = 1000000000;
+
+		System.out.println(new Solution().minEatingSpeed(piles, h));
 	}
 }

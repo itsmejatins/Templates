@@ -1,12 +1,21 @@
 package current.temp;
 
+import java.util.StringJoiner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Temp extends RegexDemo
 {
 	public static void main(String[] args)
 	{
-		int a = Integer.MAX_VALUE, b = Integer.MAX_VALUE, c = Integer.MAX_VALUE;
-		System.out.println((long) a + b + c);
-		System.out.println((long) a + (long) b + (long) c);
-		System.out.println(a + b + (long) c);
+		String input = "21474836460";
+
+		// Remove leading zeroes using regex
+		String output = input.replaceFirst("^0+", "");
+
+		System.out.println("Original string: " + input);
+		System.out.println("String without leading zeroes: " + output);
+
 	}
+
 }

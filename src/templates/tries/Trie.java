@@ -1,5 +1,7 @@
 package templates.tries;
 
+import java.util.List;
+
 public class Trie
 {
 	static class Node
@@ -26,12 +28,37 @@ public class Trie
 		head = new Node();
 	}
 
+	public Trie(List<String> wordsToInsert)
+	{
+		head = new Node();
+		for (String s : wordsToInsert)
+			insert(s);
+	}
+
+	public Trie(String[] wordsToInsert)
+	{
+		head = new Node();
+		for (String s : wordsToInsert)
+			insert(s);
+	}
+
+	/**
+	 * 
+	 * @param node - the node of the trie you want to inspect
+	 * @param c    - the character you want the node to have
+	 * @return true if the node 'node' of the trie has character 'c'
+	 */
+	public boolean contains(Node node, char c)
+	{
+		return node.children[c - 'a'] != null;
+	}
+
 	/**
 	 * 
 	 * @param word
-	 * @return if the word already exists, returns false, else return true 
+	 * @return if the word already exists, returns false, else return true
 	 */
-	
+
 	public boolean insert(String word)
 	{
 		boolean newWord = false;
