@@ -4,32 +4,39 @@ import java.util.Arrays;
 
 class Solution
 {
-	public int minEatingSpeed(int[] piles, int h)
+	public boolean isIsomorphic(String s, String t)
 	{
-		int low = 1, high = Arrays.stream(piles).max().getAsInt();
-		while (low <= high)
+
+		char[] map = new char[26];
+		char[] inv = new char[26];
+
+		Arrays.fill(map, ' ');
+		Arrays.fill(inv, ' ');
+
+		for (int i = 0; i < s.length(); i++)
 		{
-			int mid = (low + high) / 2;
-			if (canEat(piles, mid, h))
-				high = mid - 1;
-			else
-				low = mid + 1;
+			char key = s.charAt(i);
+			char val = t.charAt(i);
+
+			if (map[key - 'a'] == ' ' && inv[val - 'a'] == ' ')
+			{
+				map[key - 'a'] = val;
+				inv[val - 'a'] = key;
+			}
+			else if (map[key - 'a'] == ' ' && inv[val - 'a'] != ' ')
+				return false;
+
+			else if (map[key - 'a'] != val)
+				return false;
+
 		}
-		return high + 1;
-	}
 
-	private boolean canEat(int piles[], int speed, int timeAvailable)
-	{
-		long timeTaken = Arrays.stream(piles).mapToLong(i -> i).reduce(0,
-				(a, b) -> a + (long) Math.ceil((double) b / speed));
-		return timeTaken <= timeAvailable;
-	}
+		return true;
 
+	}
+	
 	public static void main(String[] args)
 	{
-		int piles[] = { 805306368, 805306368, 805306368 };
-		int h = 1000000000;
-
-		System.out.println(new Solution().minEatingSpeed(piles, h));
+		var x = new Solution().isIsomorphic("egg", "add");
 	}
 }
