@@ -30,8 +30,8 @@ public class NumberTrie
 	 * Takes a binary representation of a number and inserts it into the trie.
 	 * 
 	 * @param number - The binary representation of the number in string format.
-	 * @return true if number was absent from the trie, false if number already
-	 *         existed in the trie.
+	 * @return true if number was absent from the trie, ie, a new number is being
+	 *         inserted into the trie, false if number already existed in the trie.
 	 */
 
 	public boolean insert(String number)
@@ -90,6 +90,44 @@ public class NumberTrie
 		}
 		traverse.endCount++;
 		return newNumber;
+	}
+
+	/**
+	 * Takes in a number and returns the maximum value of its XOR with candidates
+	 * being all the elements present in the trie.
+	 * 
+	 * @param n:        the input number
+	 * @param bitCount: in how many bits the input number is represented. Ideally it
+	 *                  should be equal to the number of bits in which the numbers
+	 *                  inside the trie are represented. For ex - if numbers inside
+	 *                  the trie are of 32 bits, the bitCount should be equal to 32.
+	 * @return maximum value of XOR.
+	 */
+
+	public int maxXor(int n, int bitCount)
+	{
+		int ans = 0;
+		Node traverse = this.head;
+
+		for (int i = bitCount - 1; i >= 0; i--)
+		{
+			int d = (n & (1 << i)) != 0 ? 1 : 0;
+			int dc = d == 1 ? 0 : 1; // d complement
+
+			if (traverse.children[dc] != null)
+			{
+				ans = 2 * ans + 1;
+				traverse = traverse.children[dc];
+			}
+			else
+			{
+				ans *= 2;
+				traverse = traverse.children[d];
+			}
+
+		}
+
+		return ans;
 	}
 
 }

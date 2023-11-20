@@ -11,6 +11,6 @@ public class FormatToArray
 
 	public static void main(String[] args)
 	{
-		spaceAndBracket( "[[1,2,3,4,5],[6,7,8,9,10],[11,12,13,14,15],[16,17,18,19,20],[21,22,23,24,25]]");
+		spaceAndBracket("[[7,0],[3,1],[6,2],[4,3],[4,5],[4,6],[4,7]]");
 	}
 }
