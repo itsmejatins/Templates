@@ -1,4 +1,4 @@
-package templates.formatting;
+package templates.io;
 
 import java.io.BufferedReader;
 import java.io.IOException;

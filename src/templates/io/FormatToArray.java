@@ -1,4 +1,4 @@
-package templates.formatting;
+package templates.io;
 
 public class FormatToArray
 {
@@ -11,6 +11,6 @@ public class FormatToArray
 
 	public static void main(String[] args)
 	{
-		spaceAndBracket("[[7,0],[3,1],[6,2],[4,3],[4,5],[4,6],[4,7]]");
+		spaceAndBracket("[[\"John\",\"johnsmith@mail.com\",\"john_newyork@mail.com\"],[\"John\",\"johnsmith@mail.com\",\"john00@mail.com\"],[\"Mary\",\"mary@mail.com\"],[\"John\",\"johnnybravo@mail.com\"]]");
 	}
 }
