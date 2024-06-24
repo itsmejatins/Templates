@@ -23,6 +23,22 @@ public class Util
 		return adj;
 	}
 
+	public static   List<List<Integer>> getAdj(int n, List<List<Integer>> edges, boolean directed)
+	{
+		List<List<Integer>> adj = new ArrayList<>();
+		for (int i = 0; i < n; i++)
+			adj.add(new ArrayList<>());
+
+		for (List<Integer> edge : edges)
+		{
+			int u = edge.get(0), v = edge.get(1);
+			adj.get(u).add(v);
+			if (!directed)
+				adj.get(v).add(u);
+		}
+		return adj;
+	}
+
 	public static List<List<Integer>> getReveseAdj(int n, int edges[][])
 	{
 		List<List<Integer>> radj = new ArrayList<>(n);
