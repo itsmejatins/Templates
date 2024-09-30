@@ -1,23 +1,15 @@
 package current.temp;
 
-import templates.segment_trees.SegmentTree;
+import java.util.*;
 
-import java.util.Arrays;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
 
-public class Playground {
+ class Playground {
     public static void main(String[] args) {
-        Long arr[] = {0L, 1L, 2L, 3L};
-        SegmentTree<Long> sg = new SegmentTree<>(
-                arr,
-                Long::sum,
-                0L
-        );
-
-//        Integer x = 12;
-//        Long y = x.longValue();
-
+       TreeMap<String, String> map = new TreeMap<>();
+        System.out.println(map.firstEntry());
 
     }
 }

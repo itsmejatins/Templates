@@ -9,6 +9,6 @@ public class FormatToArray {
 
     public static void main(String[] args) {
 
-		spaceAndBracket("[[1,2,3,4],[1,2],[3,4],[0,4],[]]");
+		spaceAndBracket("[[0,1],[1,2],[2,3],[3,4],[0,5],[1,6],[2,7],[3,8]]");
     }
 }
