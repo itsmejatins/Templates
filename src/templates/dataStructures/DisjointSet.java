@@ -1,6 +1,4 @@
-package current.temp;
-
-import java.util.*;
+package templates.dataStructures;
 
 class DisjointSet {
     int p[], r[], s[], size;
@@ -16,15 +14,15 @@ class DisjointSet {
         this.r = new int[n];
     }
 
-    public int findParent(int n) {
+    public int getParent(int n) {
         if (p[n] == n)
             return n;
-        p[n] = findParent(p[n]);
+        p[n] = getParent(p[n]);
         return p[n];
     }
 
     public void unionByRank(int n1, int n2) {
-        int p1 = findParent(n1), p2 = findParent(n2);
+        int p1 = getParent(n1), p2 = getParent(n2);
         int r1 = r[p1], r2 = r[p2];
 
         if (r1 <= r2) {
@@ -38,7 +36,7 @@ class DisjointSet {
     }
 
     public void unionBySize(int n1, int n2) {
-        int p1 = findParent(n1), p2 = findParent(n2);
+        int p1 = getParent(n1), p2 = getParent(n2);
         if (s[p1] <= s[p2]) {
             p[p1] = p2;
             s[p2] += s[p1];

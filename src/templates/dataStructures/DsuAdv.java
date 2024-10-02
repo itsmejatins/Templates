@@ -6,21 +6,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Dsu {
+public class DsuAdv {
 	private int parent[], rank[];
 	private int setsCount = 0;
 	private Map<Integer, Integer> setsSizeMap; // (id, size)
 	private boolean wantSetsSizeMap = false;
 	private boolean maintainSetsMap = false; // do it later
 
-	public Dsu(int n) {
+	public DsuAdv(int n) {
 		parent = new int[n];
 		Arrays.fill(parent, -1);
 		rank = new int[n];
 		Arrays.fill(rank, -1);
 	}
 
-	public Dsu(int n, boolean wantSetsSizeMap) {
+	public DsuAdv(int n, boolean wantSetsSizeMap) {
 		this(n);
 		if (wantSetsSizeMap) {
 			setsSizeMap = new HashMap<>();
