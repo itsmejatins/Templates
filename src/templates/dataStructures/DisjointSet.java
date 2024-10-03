@@ -23,6 +23,8 @@ class DisjointSet {
 
     public void unionByRank(int n1, int n2) {
         int p1 = getParent(n1), p2 = getParent(n2);
+        if (p1 == p2)
+            return;
         int r1 = r[p1], r2 = r[p2];
 
         if (r1 <= r2) {
@@ -37,12 +39,14 @@ class DisjointSet {
 
     public void unionBySize(int n1, int n2) {
         int p1 = getParent(n1), p2 = getParent(n2);
+        if (p1 == p2)
+            return;
         if (s[p1] <= s[p2]) {
             p[p1] = p2;
             s[p2] += s[p1];
         } else {
             p[p2] = p1;
-            s[p1] += s[p1];
+            s[p1] += s[p2];
         }
     }
 }
